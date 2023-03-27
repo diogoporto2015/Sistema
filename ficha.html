@@ -11,44 +11,69 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand  border border-1 border-drak  bg-white shadow ">
+    <nav class="navbar navbar-expand navbar-dark border border-1 border-drak  bg-primary shadow ">
         <div class="container-fluid">
             <div class="navbar-nav">
                 <img class="navbar-brand" src="./imagens/medimagem2.png" style="width: 50px; border-radius: 100px;">
                 <span class="navbar-text pt-3"><h3>MedImagem</h3></span>
             </div>
+
+            <form class="d-flex">
+                <input class="form-control m-2" type="text">
+                <button class="btn btn-primary m-2">Pesquisa</button>
+            </form>                
+
             <ul class="navbar-nav ">
-                
+
                 <div class="dropdown">
                     <li class="nav-item">
-                        <a  class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Agenda</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Agenda</a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#" class="dropdown-item">Denssiometria</a>
                                 </li>
 
                                 <li>
+                                    <hr class="dropdown-divider"/>
                                     <a href="/agenda.html" class="dropdown-item">Mamografia</a>
                                 </li>
                             
                                 <li>
+                                    <hr class="dropdown-divider"/>
                                     <a href="#" class="dropdown-item">Médico Ortopedia</a>
                                 </li>
                             
                                 <li>
+                                    <hr class="dropdown-divider"/>
                                     <a href="#" class="dropdown-item">Raios X</a>
                                 </li>
                             
                                 <li>
+                                    <hr class="dropdown-divider"/>
                                     <a href="#" class="dropdown-item">Ultrassonografia</a>
                                 </li>
-                            </ul>    
+                            </ul>
                     </li>
                 </div>
 
+                <div class="dropdown">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Paciente</a> 
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Paciente</a> 
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="" class="dropdown-item">Cadastro</a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider"/>
+                                <a href="" class="dropdown-item">Declaração de Comparecimento</a>
+                            </li>
+                        
+                        </ul> 
+
                     </li>
+                </div>
 
                 <div class="dropdown">
                     <li class="nav-item">
@@ -60,6 +85,7 @@
                             </li>
 
                             <li>
+                                <hr class="dropdown-divider"/>
                                 <a href="" class="dropdown-item">Fechamento do Faturamento</a>
                             </li>
                         
@@ -73,7 +99,8 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="" class="dropdown-item">Cadastro de Funcionário</a>
+                                <h2 class="dropdown-header">Funcionários</h2>
+                                <a href="" class="dropdown-item">Adicionar Cadastro</a>
                             </li>
 
                             <li>
@@ -81,11 +108,13 @@
                             </li>
                         
                             <li>
-                                <a href="" class="dropdown-item">Apagar Cadsatro</a>
+                                <a href="" class="dropdown-item">Apagar Cadastro</a>
+                                <hr class="dropdown-divider"/>
                             </li>
                         
                             <li>
-                                <a href="" class="dropdown-item">Cadastrar Usuário</a>
+                                <h2 class="dropdown-header">Usuários</h2>
+                                <a href="" class="dropdown-item">Adicionar Cadastrar</a>
                             </li>
                         
                         </ul> 
@@ -97,12 +126,13 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Sair</a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a href="" class="dropdown-item">Logout</a>
+                                <a href="./index.html" class="dropdown-item">Logout</a>
                             </li>
 
                             <li>
+                                <hr class="dropdown-divider"/>
                                 <a href="" class="dropdown-item">Fechar</a>
                             </li>
                         
@@ -110,16 +140,95 @@
 
                     </li>
                 </div>
+
+            </ul>   
         </div>
     </nav>
-    
-    <form class="container-fluid pt-3 pb-5 border bg-white shadow" action="">
 
-        <div class="my-3 text-center">
-            <input class="btn btn-primary" type="submit" name="btn_novo" value="Limpar">
-            <input class="btn btn-primary" type="submit" name="btn_enviar" value="Cadastrar">
-            <input class="btn btn-primary" type="submit" name="btn_atualizar" value="Atualizar">
-            <input class="btn btn-primary" type="submit" name="btn_atualizar" value="imprimir">
+    <div class="pt-4"></div>
+
+    <form class="container-sm pt-3 p-5 border bg-white shadow" action="">
+
+        <div class="my-3 text-start">
+            <button type="reset" class="btn btn-primary ms-5">Limpar dados</button>
+            
+            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalCadastro">Cadastrar</button>
+
+            <div id="JanelaModalCadastro" class="modal fade " data-bs-backdrop="static">
+
+                <div class="modal-dialog modal-lg modal-dialog-centered ">
+
+                    <div class="modal-content">
+ 
+                        <div class="modal-header align-self-center">
+                            <h2 class="modal-title">Cadastro da Ficha do Paciente</h2>
+                        </div>
+
+                        <div class="modal-body">
+                            <p><h3 class="text-center">PARABÉNS</h3></p>
+                            <p class="text-center">Cadastro realizado com sucesso!</p>
+                            <p class="text-center">Para imprimir a ficha do paciente clique em imprimir.</p>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-primary" >Imprimir</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalAtualizar">Atualizar</button>
+
+            <div id="JanelaModalAtualizar" class="modal fade " data-bs-backdrop="static">
+
+                <div class="modal-dialog modal-lg modal-dialog-centered ">
+
+                    <div class="modal-content">
+ 
+                        <div class="modal-header align-self-center">
+                            <h2 class="modal-title">Atualização da Ficha do Paciente</h2>
+                        </div>
+
+                        <div class="modal-body">
+                            <p><h3 class="text-center">PARABÉNS</h3></p>
+                            <p class="text-center">Atualização realizado com sucesso!</p>
+                            <p class="text-center">Para imprimir a ficha do paciente clique em imprimir.</p>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-primary" >Imprimir</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalImprimir">Imprimir</button>
+
+            <div id="JanelaModalImprimir" class="modal fade " data-bs-backdrop="static">
+
+                <div class="modal-dialog modal-lg modal-dialog-centered ">
+
+                    <div class="modal-content">
+ 
+                        <div class="modal-header align-self-center">
+                            <h2 class="modal-title">Imprimir Ficha do Paciente</h2>
+                        </div>
+
+                        <div class="modal-body">
+                            <p><h3 class="text-center">CONFIRMAÇÃO</h3></p>
+                            <p class="text-center">Para imprimir a ficha do paciente clique em imprimir.</p>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-primary">Imprimir</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="container-fluid border border-1 border-drak mb-5 p-4 bg-white shadow">
@@ -192,7 +301,7 @@
 
                 <div class="my-3 col-5">
                     <label class="form-label">Endereço:</label>
-                    <input class="form-control" type="number" name="endereco">
+                    <input class="form-control" type="text" name="endereco">
                 </div>
 
                 <div class="my-3 col-1">
@@ -211,17 +320,17 @@
 
                 <div class="my-3 col">
                     <label class="form-label">Bairro:</label>
-                    <input class="form-control" type="number" name="bairro">
+                    <input class="form-control" type="text" name="bairro">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Cidade:</label>
-                    <input class="form-control" type="number" name="ciadade">
+                    <input class="form-control" type="text" name="ciadade">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Estado:</label>
-                    <input class="form-control" type="number" name="estado">
+                    <input class="form-control" type="text" name="estado">
                 </div>
 
                 <div class="my-3 col">
