@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+    var mamografiaEl = document.getElementById('mamografia');
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    var mamografia = new FullCalendar.Calendar(mamografiaEl, {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
@@ -91,5 +91,5 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
     });
 
-    calendar.render();
+    mamografia.render();
   });
