@@ -2,7 +2,9 @@ const mysql = require('mysql2')
 const express = require('express');
 const bodyParser = require("body-parser");
 const encoder = bodyParser.urlencoded();
-
+const paciente = require("./modulos/Paciente")
+const exame = require("./modulos/Exame")
+const path = require('path');
 const app = express();
 
 
@@ -15,10 +17,10 @@ app.use('/fullcalendar-6.1.4/packages/core/locales/', express.static('fullcalend
 
 app.use('/imagens', express.static('imagens'));
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//conectar ao banco de dados
+//conectar ao banco de dados para logar no sistema
 const connection = mysql.createConnection({
     host: "192.168.1.66",
     user: "diogoporto",
@@ -36,12 +38,12 @@ app.get ("/index.html", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/inicio.html", function (req, res){
-    res.sendFile(__dirname + "/inicio.html");
+app.get("/ficha.html", function (req, res){
+    res.sendFile(__dirname + "/ficha.html");
 })
 
-app.get ("/agenda.html", function(req, res) {
-    res.sendFile(__dirname + "/agenda.html");
+app.get ("/mamografia.html", function(req, res) {
+    res.sendFile(__dirname + "/mamografia.html");
 });
 
 
@@ -52,17 +54,42 @@ app.post("/index.html", encoder, (req, res) => {
 
     connection.query("select * from usuarios where nome = ? and senha = ?", [nome, senha], (error, results, fields) => {
         if(results.length > 0){
-            res.redirect("/inicio.html");
+            res.redirect("/ficha.html");
         }else {
-            res.redirect("/index.html");
+            res.redirect("/");
         }
         res.end();
     })
 })
 
-
-
-
+// Cadastra Ficha de Pacientes
+app.post('/Ficha.html', function(req, res){
+    paciente.create({
+        nome: req.body.nome,
+        cpf: req.body.cpf,
+        rg: req.body.rg,
+        data_nascimento: req.body.data_nascimento,
+        sexo: req.body.sexo,
+        peso: req.body.peso,
+        altura: req.body.altura,
+        telefone: req.body.telefone,
+        celular: req.body.celular,
+        email: req.body.email,
+        endereco: req.body.endereco,
+        numero: req.body.numero,
+        complemento: req.body.complemento,
+        bairro: req.body.bairro,
+        cidade: req.body.cidade,
+        estado: req.body.estado,
+        cep: req.body.cep
+    }).then(function(){
+        res.sendFile(path.join(__dirname+'/Ficha.html'));
+    }).catch(function(erro){
+        res.send('Erro: Nã0 foi cadastrado!' + erro)
+        return 
+    })
+   
+})
 
 
 app.listen(8080);

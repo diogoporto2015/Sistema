@@ -151,12 +151,12 @@
 
     <div class="pt-4"></div>
 
-    <form class="container-sm pt-3 p-5 border bg-white shadow w-75" action="">
+    <form class="container-sm pt-3 p-5 border bg-white shadow w-75" action="" method="POST">
 
         <div class="my-3 text-start">
             <button type="reset" class="btn btn-primary ms-5">Limpar dados</button>
             
-            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalCadastro">Cadastrar</button>
+            <button type="submit" id="cadastrar" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalCadastro">Cadastrar</button>
 
             <div id="JanelaModalCadastro" class="modal fade " data-bs-backdrop="static">
 
@@ -182,7 +182,7 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalAtualizar">Atualizar</button>
+            <button type="button" id="atualizar" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalAtualizar">Atualizar</button>
 
             <div id="JanelaModalAtualizar" class="modal fade " data-bs-backdrop="static">
 
@@ -208,7 +208,7 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalImprimir">Imprimir</button>
+            <button type="button" id="imprimir" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalImprimir">Imprimir</button>
 
             <div id="JanelaModalImprimir" class="modal fade " data-bs-backdrop="static">
 
@@ -241,17 +241,17 @@
 
                 <div class="my-3 col-5">
                     <label class="form-label">Nome:</label>
-                    <input class="form-control" type="text" name="nome">
+                    <input id="nome" class="form-control" type="text" name="nome">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">CPF:</label>
-                    <input class="form-control" type="number" name="cpf">
+                    <input id="cpf" class="form-control" type="number" name="cpf">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">RG:</label>
-                    <input class="form-control" type="number" name="rg">
+                    <input id="rg" class="form-control" type="number" name="rg">
                 </div>
 
             </div>
@@ -259,18 +259,23 @@
             <div class="row">
 
                 <div class="my-3 col">
+                    <label class="form-label">Email:</label>
+                    <input id="email" class="form-control" type="text" name="email">
+                </div>
+
+                <div class="my-3 col">
                     <label class="form-label">Data de Nascimento:</label>
-                    <input class="form-control" type="date" name="nascimento">
+                    <input id="data_nascimento" class="form-control" type="date" name="data_nascimento">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Telefone:</label>
-                    <input class="form-control" type="number" name="tel">
+                    <input id="telefone" class="form-control" type="number" name="telefone">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Celular:</label>
-                    <input class="form-control" type="number" name="cel">
+                    <input id="celular" class="form-control" type="number" name="celular">
                 </div>
 
             </div>
@@ -279,20 +284,20 @@
 
                 <div class="my-3 col-2 ms-4 ">
                     <label class="form-label "><h5>Sexo:</h5></label>  <br>
-                    <input type="radio" name="genero" id="feminino"> 
+                    <input type="radio" id="feminino" name="sexo"  value="feminino"> 
                     <label for="feminino" class="ms-2"><h6>Feminino</h6></label> <br>
-                    <input type="radio" name="genero" id="masculino">
+                    <input type="radio" id="masculino" name="sexo" id="masculino" value="masculino">
                     <label for="masculino" class="ms-2"><h6>Masculino</h6></label>
                 </div>
 
                 <div class="my-3 col-2" col>
-                    <label class="form-label">Peso:</label>
-                    <input class="form-control" type="number" name="peso">
+                    <label for="peso" class="form-label">Peso:</label>
+                    <input id="peso" class="form-control" type="number" name="peso">
                 </div>
 
                 <div class="my-3 col-2 ms-5">
                     <label class="form-label">Altura:</label>
-                    <input class="form-control" type="number" name="alt">
+                    <input id="altura" class="form-control" type="number" name="altura">
                 </div>
 
             </div>
@@ -305,17 +310,17 @@
 
                 <div class="my-3 col-5">
                     <label class="form-label">Endereço:</label>
-                    <input class="form-control" type="text" name="endereco">
+                    <input id="endereco" class="form-control" type="text" name="endereco">
                 </div>
 
                 <div class="my-3 col-1">
                     <label class="form-label">Nº:</label>
-                    <input class="form-control" type="number" name="numero">
+                    <input id="numero" class="form-control" type="number" name="numero">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Complemento:</label>
-                    <input class="form-control" type="text" name="complemento">
+                    <input id="complemento" class="form-control" type="text" name="complemento">
                 </div>
                 
             </div>
@@ -324,22 +329,22 @@
 
                 <div class="my-3 col">
                     <label class="form-label">Bairro:</label>
-                    <input class="form-control" type="text" name="bairro">
+                    <input id="bairro" class="form-control" type="text" name="bairro">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Cidade:</label>
-                    <input class="form-control" type="text" name="ciadade">
+                    <input id="cidade" class="form-control" type="text" name="cidade">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Estado:</label>
-                    <input class="form-control" type="text" name="estado">
+                    <input id="estado" class="form-control" type="text" name="estado">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">CEP:</label>
-                    <input class="form-control" type="number" name="cep">
+                    <input id="cep" class="form-control" type="number" name="cep">
                 </div>
 
             </div>
@@ -350,38 +355,45 @@
 
             <div class="row">
 
-                <div class="my-3 col-5">
+                <div class="my-3 col-3">
+                    <label class="form-label">Nome do Exame:</label>
+                    <input id="nome_exame" class="form-control" type="text" name="nome_exame">
+                </div>
+
+                <div class="my-3 col-3">
                     <label class="form-label">Tipo de Exame:</label>
-                    <input class="form-control" type="text" name="endereco">
+                    <input id="tipo_exame" class="form-control" type="text" name="tipo_exame">
+                </div>
+
+                <div class="my-3 col">
+                    <label class="form-label">Convênio:</label>
+                    <input id="convenio" class="form-control" type="text" name="convenio">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Data do Exame:</label>
-                    <input class="form-control" type="date" name="dataExame">
-                </div>
-
-                <div class="my-3 col">
-                    <label class="form-label">Data de entrega:</label>
-                    <input class="form-control" type="date" name="dataEntrega">
+                    <input id="data_exame" class="form-control" type="date" name="data_exame">
                 </div>
                 
             </div>
 
             <div class="row">
 
-                <div class="my-3 col">
-                    <label class="form-label">Convênio:</label>
-                    <input class="form-control" type="text" name="convenio">
-                </div>
+                
 
-                <div class="my-3 col">
+                <div class="my-3 col-3">
                     <label class="form-label">Médico:</label>
-                    <input class="form-control" type="text" name="medico">
+                    <input id="medico" class="form-control" type="text" name="medico">
+                </div>
+
+                <div class="my-3 col-6">
+                    <label class="form-label">Comentários:</label>
+                    <input id="comentario" class="form-control" type="text" name="comnetario">
                 </div>
 
                 <div class="my-3 col">
-                    <label class="form-label">Comnetários:</label>
-                    <input class="form-control" type="text" name="comnetario">
+                    <label class="form-label">Data de entrega:</label>
+                    <input id="data_entrega" class="form-control" type="date" name="data_entrega">
                 </div>
 
             </div>
