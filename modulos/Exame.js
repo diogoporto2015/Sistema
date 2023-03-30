@@ -2,7 +2,7 @@ const db = require('./db')
 
 //cria a tabela no banco de dados no mysql
 const Exame = db.sequelize.define('exame', {
-    id_tipo_exame: {
+    id_exame: {
         type : db.Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,

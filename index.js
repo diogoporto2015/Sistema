@@ -86,7 +86,7 @@ app.post('/Ficha.html', function(req, res){
         res.sendFile(path.join(__dirname+ '/Ficha.html'));
     }).catch(function(erro){
         res.send('Erro: Nã0 foi cadastrado!' + erro)
-        return 
+        return  
     }),exame.create({
         tipo_exame: req.body.tipo_exame,
         nome_exame: req.body.nome_exame,
@@ -104,20 +104,3 @@ app.post('/Ficha.html', function(req, res){
 
 app.listen(8080);
 console.log("Servidor Rodando e Funcionando! localhost:8080");
-/*
-,
-    exame.create({
-        tipo_exame: req.body.tipo_exame,
-        nome_exame: req.body.nome_exame,
-        comentario: req.body.comentario,
-        data_exame: req.body.data_exame,
-        data_entrega: req.body.data_entrega,
-        convenio: req.body.convenio,
-        medico: req.body.altura
-    }).then(function(){
-        res.sendFile(path.join(__dirname+ '/Ficha.html'));
-    }).catch(function(erro){
-        res.send('Erro: Nã0 foi cadastrado!' + erro)
-        return 
-    })
-*/
