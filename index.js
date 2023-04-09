@@ -82,11 +82,7 @@ app.post('/Ficha.html', function(req, res){
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep
-    }).then(function(){
-        res.sendFile(path.join(__dirname+ '/Ficha.html'));
-    }).catch(function(erro){
-        res.send('Erro: Nã0 foi cadastrado!' + erro)
-        return  
+     
     }),exame.create({
         tipo_exame: req.body.tipo_exame,
         nome_exame: req.body.nome_exame,
@@ -98,6 +94,7 @@ app.post('/Ficha.html', function(req, res){
     }).then(function(){
         res.sendFile(path.join(__dirname+ '/Ficha.html'));
     }).catch(function(erro){
+        res.send('Erro: Nã0 foi cadastrado!' + erro)
         return 
     })
 })
