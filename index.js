@@ -20,6 +20,7 @@ app.use('/fullcalendar-6.1.4/packages/core/locales/', express.static('fullcalend
 app.engine('handlebars', handlebars.engine);
 app.set('view engine','handlebars');
 
+
 app.use('/imagens', express.static('imagens'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -40,9 +41,8 @@ connection.connect(function(error){
 
 
 // Testeando com Handlebars
-app.get ('/lista', (req, res) => {
-    
-   res.render('lista')
+app.get ('/teste', (req, res) => {
+   res.render('teste')
 }); 
 
 
