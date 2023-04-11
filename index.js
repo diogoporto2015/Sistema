@@ -27,12 +27,30 @@ const connection = mysql.createConnection({
     password: "d@172709",
     database: "MEDIMAGEM"
 });
-
 connection.connect(function(error){
     if (error) throw error
-    else console.log("Conectado ao banco de dados com Sucesso!")
-
+    else 
+    console.log("Conectado ao banco de dados com Sucesso!")
+    
 });
+
+
+
+
+// Testando leitura do Banco de Dados
+app.get ('/lista', function(req, res) {
+    const sql = 'SELECT * FROM pacientes';
+    connection.query(sql, function(error, results) {
+        if (error) throw error;
+
+        console.log(results);
+    });
+});
+
+
+
+
+
 
 app.get ("/index.html", function(req, res) {
     res.sendFile(__dirname + "/index.html");
@@ -45,8 +63,6 @@ app.get("/ficha.html", function (req, res){
 app.get ("/mamografia.html", function(req, res) {
     res.sendFile(__dirname + "/mamografia.html");
 });
-
-
 
 app.post("/index.html", encoder, (req, res) => {
     var nome = req.body.nome;
@@ -98,6 +114,9 @@ app.post('/Ficha.html', function(req, res){
         return 
     })
 })
+
+
+
 
 app.listen(8080);
 console.log("Servidor Rodando e Funcionando! localhost:8080");
