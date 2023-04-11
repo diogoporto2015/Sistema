@@ -38,8 +38,13 @@ connection.connect(function(error){
 
 // Testando leitura do Banco de Dados
 app.get ('/lista', function(req, res) {
-    
-    res.render('listar')
+
+   connection.query('SELECT * FROM pacientes',[], (error, resultado) => {
+    if (error) {
+        res.status(200).send(error)
+    }
+    res.render('listar', {lista: resultado})
+   })
 });
 
 
