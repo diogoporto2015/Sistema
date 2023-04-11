@@ -35,16 +35,22 @@ connection.connect(function(error){
 });
 
 
+// Testeando com Handlebars
+app.get ('/listar', (req, res) => {
+    
+   res.render("lista")
+}); 
 
 
 // Testando leitura do Banco de Dados
-app.get ('/lista', function(req, res) {
-    const sql = 'SELECT * FROM pacientes';
-    connection.query(sql, function(error, results) {
-        if (error) throw error;
-
-        console.log(results);
-    });
+app.get ('/listar', function(req, res) {
+    
+    connection.query('SELECT * FROM pacientes',[],function(error, resultado){
+        if(error){
+            res.status(200).send(error)
+        }
+        res.render('lista', { lista: resultado})
+    }); 
 });
 
 
