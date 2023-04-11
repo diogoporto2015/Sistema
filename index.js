@@ -6,8 +6,7 @@ const paciente = require("./modulos/Paciente")
 const exame = require("./modulos/Exame")
 const path = require('path');
 const app = express();
-const dp = require('express-handlebars');
-const handlebars = dp.create({});
+
 
 
 //Inseri aparencia, imagens comando dos butões em js
@@ -15,10 +14,6 @@ app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
 app.use('/fullcalendar-6.1.4/dist', express.static('fullcalendar-6.1.4/dist'));
 app.use('/fullcalendar-6.1.4/packages/core/locales/', express.static('fullcalendar-6.1.4/packages/core/locales'));
-
-
-app.engine('handlebars', handlebars.engine);
-app.set('view engine','handlebars');
 
 
 app.use('/imagens', express.static('imagens'));
@@ -40,14 +35,12 @@ connection.connect(function(error){
 });
 
 
-// Testeando com Handlebars
-app.get ('/teste', (req, res) => {
-   res.render('teste')
-}); 
-
 
 // Testando leitura do Banco de Dados
-
+app.get ('/lista', function(req, res) {
+    
+    res.render('listar')
+});
 
 
 
