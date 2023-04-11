@@ -6,7 +6,8 @@ const paciente = require("./modulos/Paciente")
 const exame = require("./modulos/Exame")
 const path = require('path');
 const app = express();
-
+const dp = require('express-handlebars');
+const handlebars = dp.create({});
 
 
 //Inseri aparencia, imagens comando dos butões em js
@@ -15,8 +16,11 @@ app.use('/js', express.static('js'));
 app.use('/fullcalendar-6.1.4/dist', express.static('fullcalendar-6.1.4/dist'));
 app.use('/fullcalendar-6.1.4/packages/core/locales/', express.static('fullcalendar-6.1.4/packages/core/locales'));
 
-app.use('/imagens', express.static('imagens'));
 
+app.engine('handlebars', handlebars.engine);
+app.set('view engine','handlebars');
+
+app.use('/imagens', express.static('imagens'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -36,22 +40,14 @@ connection.connect(function(error){
 
 
 // Testeando com Handlebars
-app.get ('/listar', (req, res) => {
+app.get ('/lista', (req, res) => {
     
-   res.render("lista")
+   res.render('lista')
 }); 
 
 
 // Testando leitura do Banco de Dados
-app.get ('/listar', function(req, res) {
-    
-    connection.query('SELECT * FROM pacientes',[],function(error, resultado){
-        if(error){
-            res.status(200).send(error)
-        }
-        res.render('lista', { lista: resultado})
-    }); 
-});
+
 
 
 
