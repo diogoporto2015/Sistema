@@ -29,23 +29,17 @@ const connection = mysql.createConnection({
 });
 connection.connect(function(error){
     if (error) throw error
-    else 
     console.log("Conectado ao banco de dados com Sucesso!")
-    
+
+    // leitura do Banco de Dados
+    const sql = "SELECT * FROM pacientes";
+    connection.query(sql, (error, resultado) => {
+        if (error) throw error;
+        console.log(resultado);
+    })
 });
 
 
-
-// Testando leitura do Banco de Dados
-app.get ('/lista', function(req, res) {
-
-   connection.query('SELECT * FROM pacientes',[], (error, resultado) => {
-    if (error) {
-        res.status(200).send(error)
-    }
-    res.render('listar', {lista: resultado})
-   })
-});
 
 
 
