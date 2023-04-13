@@ -44,12 +44,6 @@ connection.connect(function(error){
     if (error) throw error
     console.log("Conectado ao banco de dados com Sucesso!")
 
-    // leitura do Banco de Dados
-<<<<<<< Updated upstream
-  
-=======
-    
->>>>>>> Stashed changes
 });
 
 app.get('/', (req, res) => {
