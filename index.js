@@ -27,22 +27,20 @@ const connection = mysql.createConnection({
     password: "d@172709",
     database: "MEDIMAGEM"
 });
+
 connection.connect(function(error){
     if (error) throw error
     console.log("Conectado ao banco de dados com Sucesso!")
 
     // leitura do Banco de Dados
-    const sql = "SELECT * FROM pacientes";
-    connection.query(sql, (error, resultado) => {
+    const sql = "SELECT * FROM pacientes ";
+    connection.query(sql, (error, resultado, fields) => {
         if (error) throw error;
         console.log(resultado);
-    })
+    });
+
+    connection.end();
 });
-
-
-
-
-
 
 
 
