@@ -9,17 +9,15 @@ const ejs = require('ejs');
 
 const app = express();
 
-<<<<<<< Updated upstream
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
 
 
-=======
+
 app.set('views', './views');
 app.set('view engine', 'ejs');
->>>>>>> Stashed changes
 
 //Inseri aparencia, imagens comando dos butões em js
 app.use('/css', express.static('css'));
@@ -55,7 +53,7 @@ app.get('/', (req, res) => {
     
         const data = {
           id: results[0].id_paciente,
-          name: results[0].nome
+          nome: results[0].nome
         };
     
         res.render('teste', data);
