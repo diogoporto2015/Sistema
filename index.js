@@ -9,12 +9,17 @@ const ejs = require('ejs');
 
 const app = express();
 
+<<<<<<< Updated upstream
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
 
 
+=======
+app.set('views', './views');
+app.set('view engine', 'ejs');
+>>>>>>> Stashed changes
 
 //Inseri aparencia, imagens comando dos butões em js
 app.use('/css', express.static('css'));
@@ -40,8 +45,28 @@ connection.connect(function(error){
     console.log("Conectado ao banco de dados com Sucesso!")
 
     // leitura do Banco de Dados
+<<<<<<< Updated upstream
   
+=======
+    
+>>>>>>> Stashed changes
 });
+
+app.get('/', (req, res) => {
+    const query = 'SELECT * FROM pacientes ';
+    const values = [1];
+
+    connection.query(query, values, (error, results, fields) => {
+        if (error) throw error;
+    
+        const data = {
+          id: results[0].id_paciente,
+          name: results[0].nome
+        };
+    
+        res.render('teste', data);
+      });
+    });
 
 
 
