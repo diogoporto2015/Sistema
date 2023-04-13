@@ -5,7 +5,14 @@ const encoder = bodyParser.urlencoded();
 const paciente = require("./modulos/Paciente")
 const exame = require("./modulos/Exame")
 const path = require('path');
+const ejs = require('ejs');
+
 const app = express();
+
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
+
 
 
 
@@ -33,14 +40,25 @@ connection.connect(function(error){
     console.log("Conectado ao banco de dados com Sucesso!")
 
     // leitura do Banco de Dados
-    const sql = "SELECT * FROM pacientes ";
-    connection.query(sql, (error, resultado, fields) => {
-        if (error) throw error;
-        console.log(resultado);
-    });
-
-    connection.end();
+  
 });
+
+
+
+app.get('/', (req, res) => {
+    const query = 'SELECT * FROM pacientes';
+  
+    connection.query(query, (error, results, fields) => {
+      if (error) throw error;
+  
+      const data = {
+        nome: results[0].nome,
+      };
+  
+      res.render('lista', data);
+    });
+  });
+  
 
 
 
