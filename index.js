@@ -9,19 +9,16 @@ const ejs = require('ejs');
 
 const app = express();
 
-
 app.set('views', './views');
 app.set('view engine', 'ejs');
-
 
 //Inseri aparencia, imagens comando dos butões em js
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
+app.use('/imagens', express.static('imagens'));
 app.use('/fullcalendar-6.1.4/dist', express.static('fullcalendar-6.1.4/dist'));
 app.use('/fullcalendar-6.1.4/packages/core/locales/', express.static('fullcalendar-6.1.4/packages/core/locales'));
 
-
-app.use('/imagens', express.static('imagens'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -32,11 +29,9 @@ const connection = mysql.createConnection({
     password: "d@172709",
     database: "MEDIMAGEM"
 });
-
 connection.connect(function(error){
     if (error) throw error
     console.log("Conectado ao banco de dados com Sucesso!")
-
 });
 
 
@@ -56,14 +51,17 @@ app.get('/', (req, res) => {
       });
     });
 
+// carregar a pagina
 app.get ("/index.html", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 
+// carregar a pagina
 app.get("/ficha.html", function (req, res){
     res.sendFile(__dirname + "/ficha.html");
 })
 
+// carregar a pagina
 app.get ("/mamografia.html", function(req, res) {
     res.sendFile(__dirname + "/mamografia.html");
 });
@@ -83,7 +81,7 @@ app.post("/index.html", encoder, (req, res) => {
     })
 })
 
-// Cadastra Ficha de Pacientes
+// Cadastra Ficha de Pacientes e exames
 app.post('/Ficha.html', function(req, res){
     paciente.create({
         nome: req.body.nome,
@@ -103,7 +101,6 @@ app.post('/Ficha.html', function(req, res){
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep
-     
     }),exame.create({
         tipo_exame: req.body.tipo_exame,
         nome_exame: req.body.nome_exame,
@@ -116,7 +113,7 @@ app.post('/Ficha.html', function(req, res){
         res.sendFile(path.join(__dirname+ '/Ficha.html'));
     }).catch(function(erro){
         res.send('Erro: Nã0 foi cadastrado!' + erro)
-        return 
+        return  
     })
 })
 
