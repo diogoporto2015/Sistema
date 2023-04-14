@@ -14,11 +14,6 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 
-
-
-app.set('views', './views');
-app.set('view engine', 'ejs');
-
 //Inseri aparencia, imagens comando dos butões em js
 app.use('/css', express.static('css'));
 app.use('/js', express.static('js'));
@@ -44,6 +39,8 @@ connection.connect(function(error){
 
 });
 
+
+// Listar registro da tabela  do banco de dados Mysql
 app.get('/', (req, res) => {
     const query = 'SELECT * FROM pacientes ';
     const values = [1];
@@ -60,25 +57,6 @@ app.get('/', (req, res) => {
       });
     });
 
-
-
-app.get('/', (req, res) => {
-    const query = 'SELECT * FROM pacientes';
-  
-    connection.query(query, (error, results, fields) => {
-      if (error) throw error;
-  
-      const data = {
-        nome: results[0].nome,
-      };
-  
-      res.render('lista', data);
-    });
-  });
-  
-
-
-
 app.get ("/index.html", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
@@ -91,12 +69,13 @@ app.get ("/mamografia.html", function(req, res) {
     res.sendFile(__dirname + "/mamografia.html");
 });
 
+// logar com os dados do banco de dados do Mysql
 app.post("/index.html", encoder, (req, res) => {
     var nome = req.body.nome;
     var senha = req.body.senha;
 
-    connection.query("select * from usuarios where nome = ? and senha = ?", [nome, senha], (error, results, fields) => {
-        if(results.length > 0){
+    connection.query("select * from usuarios where nome = ? and senha = ?", [nome, senha], (error, resultado, fields) => {
+        if(resultado.length > 0){
             res.redirect("/ficha.html");
         }else {
             res.redirect("/");
