@@ -52,7 +52,6 @@ app.get('/', (req, res) => {
           id: results[0].id_paciente,
           nome: results[0].nome
         };
-    
         res.render('teste', data);
       });
     });
