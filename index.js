@@ -36,46 +36,32 @@ connection.connect(function(error){
 
 
 // Listar registro da tabela  do banco de dados Mysql
-app.get('/cliente/:cpf', async (req, res) => {
-    try {
-      const cpf = req.params.cpf;
-      const connection = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'senha',
-        database: 'nome_do_banco_de_dados'
-      });
+// rota para exibir os resultados
+app.get('/', function (req, res) {
+  const searchTerm = req.query.searchTerm || ''; // pega o valor do parâmetro 'searchTerm' da URL
   
-      const [rows, fields] = await connection.execute('SELECT * FROM tabela_clientes WHERE cpf = ?', [cpf]);
-  
-      if (rows.length > 0) {
-        const registro = rows[0];
-        const html = `
-          <form>
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="${registro.nome}"><br>
-  
-            <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" value="${registro.cpf}"><br>
-  
-            <label for="endereco">Endereço:</label>
-            <input type="text" name="endereco" value="${registro.endereco}"><br>
-  
-            <label for="telefone">Telefone:</label>
-            <input type="text" name="telefone" value="${registro.telefone}"><br>
-          </form>
-        `;
-        res.send(html);
+
+  if (searchTerm.trim() !== '') { // verifica se o valor é diferente de uma string vazia
+    const sql = `SELECT * FROM pacientes WHERE nome = '${searchTerm}'`; // adiciona o filtro na consulta SQL
+
+    connection.query(sql, function (error, results, fields) {
+      if (error) throw error;
+
+      if (results.length === 0) {
+        res.render('teste', { results: [], searchTerm, message: 'Paciente não encontrado.' });
       } else {
-        res.send('Registro não encontrado');
+        res.render('teste', { results, searchTerm, message: null });
       }
-  
-      await connection.end();
-    } catch (error) {
-      console.log(error);
-      res.send('Ocorreu um erro ao buscar o registro');
-    }
-  });
+    });
+  } else {
+    res.render('teste', { results: [], searchTerm, message: null });
+  }
+});
+
+// inicia o servidor
+app.listen(3000, function () {
+  console.log('Servidor iniciado na porta 3000.');
+});
 
 // carregar a pagina
 app.get ("/index.html", function(req, res) {
