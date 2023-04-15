@@ -36,7 +36,6 @@ connection.connect(function(error){
 
 
 // Listar registro da tabela  do banco de dados Mysql
-// rota para exibir os resultados
 app.get('/', function (req, res) {
   const searchTerm = req.query.searchTerm || ''; // pega o valor do parâmetro 'searchTerm' da URL
   
@@ -57,6 +56,8 @@ app.get('/', function (req, res) {
     res.render('teste', { results: [], searchTerm, message: null });
   }
 });
+
+
 
 // inicia o servidor
 app.listen(3000, function () {

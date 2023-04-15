@@ -7,7 +7,7 @@ form.addEventListener('submit', function (event) {
 
   // verifica se o valor da barra de pesquisa não está vazio
   if (searchTerm.value.trim() !== '') {
-    fetch(`/search?searchTerm=${searchTerm.value}`)
+    fetch(`/?searchTerm=${searchTerm.value}`)
       .then(response => response.json())
       .then(data => {
         if (data.length === 0) {
@@ -26,7 +26,7 @@ form.addEventListener('submit', function (event) {
           resultsContainer.innerHTML = html;
         }
       })
-      .catch(error => console.error(error));
+      
   } else {
     // exibe uma mensagem de erro se o valor da barra de pesquisa estiver vazio
     resultsContainer.innerHTML = '<p>Por favor, digite algo na barra de pesquisa.</p>';
