@@ -36,33 +36,26 @@ connection.connect(function(error){
 
 
 // Listar registro da tabela  do banco de dados Mysql
-app.get('/', function (req, res) {
-  const searchTerm = req.query.searchTerm || ''; // pega o valor do parâmetro 'searchTerm' da URL
+app.get('/', (req, res) => {
+    let registros = [];
   
+    if (req.query.q) {
+      const query = `SELECT * FROM pacientes WHERE nome LIKE '%${req.query.q}%' OR email LIKE '%${req.query.q}%' OR telefone LIKE '%${req.query.q}%'`;
+  
+      connection.query(query, (error, results) => {
+        if (error) {
+          console.log('Erro ao listar registros', error);
+          res.send('Erro ao listar registros');
+        } else {
+          registros = results;
+          res.render('teste', { registros });
+        }
+      });
+    } else {
+      res.render('teste', { registros });
+    }
+  });
 
-  if (searchTerm.trim() !== '') { // verifica se o valor é diferente de uma string vazia
-    const sql = `SELECT * FROM pacientes WHERE nome = '${searchTerm}'`; // adiciona o filtro na consulta SQL
-
-    connection.query(sql, function (error, results, fields) {
-      if (error) throw error;
-
-      if (results.length === 0) {
-        res.render('teste', { results: [], searchTerm, message: 'Paciente não encontrado.' });
-      } else {
-        res.render('teste', { results, searchTerm, message: null });
-      }
-    });
-  } else {
-    res.render('teste', { results: [], searchTerm, message: null });
-  }
-});
-
-
-
-// inicia o servidor
-app.listen(3000, function () {
-  console.log('Servidor iniciado na porta 3000.');
-});
 
 // carregar a pagina
 app.get ("/index.html", function(req, res) {
