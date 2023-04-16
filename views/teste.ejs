@@ -8,6 +8,11 @@
     <title>Ficha Paciente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
+
+
+    
+
+
 </head>
 <body>
 
@@ -18,8 +23,8 @@
                 <span class="navbar-text pt-3"><h5>MedImagem</h5></span>
             </div>
 
-            <form id="search-form" class="d-flex"  action="/" method="get">
-                <input class="form-control m-2" type="text" name="q">
+            <form id="search-form" class="d-flex"  action="/" method="GET">
+                <input class="form-control m-2" type="text" name="q"  placeholder="Pesquisar...">
                 <button type="submit" class="btn btn-primary m-2">Pesquisa</button>
             </form>                
 
@@ -150,7 +155,7 @@
 
     <div class="pt-4"></div>
 
-    <form class="container-sm pt-3 p-5 border bg-white shadow w-75" action="" method="">
+    <form class="container-sm pt-3 p-5 border bg-white shadow w-75">
 
         <div class="my-3 text-start">
             <button type="reset" class="btn btn-primary ms-5">Limpar dados</button>
@@ -237,45 +242,39 @@
         <div class="container-fluid border border-1 border-drak mb-5 p-4 bg-white shadow">
 
             <div class="row">
-
-                
                     
+                <% if (q && registros && registros.length > 0) { %>
+                    <% registros.forEach((registro) => { %>
+
+                <div class="my-3 col-5">
                     <label class="form-label">Nome:</label>
-                    
-                    
-               
-
+                    <input id="nome" class="form-control" type="text" name="nome" value="<%= registro.nome %>">
+                </div>
+            
                 <div class="my-3 col">
                     <label class="form-label">Email:</label>
-                    <input id="email" class="form-control" type="text" name="email">
+                    <input id="email" class="form-control" type="text" name="email" id="emailInput" value="<%= registro.email %>">
                 </div>
 
                 <div class="my-3 col">
                     <label class="form-label">Telefone:</label>
-                    <input id="telefone" class="form-control" type="number" name="telefone">
+                    <input id="telefone" class="form-control" type="number" name="telefone" value="<%= registro.telefone %>">
                 </div>
+
+                <% }); %>
+                <% } else if (q) { %>
+                <p>Nenhum registro encontrado.</p>
+                <% } %>
 
             </div>
         </div>
     </form>
 
-                <form class="container-sm pt-3 p-5 border bg-white shadow w-75">
-   
-                    <div class="container-fluid border border-1 border-drak mb-5 p-4 bg-white shadow">
-                        <% if (registros && registros.length > 0) { %>
-                            <% registros.forEach((registro) => { %>
-                            <input type="text" name="id" value="<%= registro.id %>">
-                            <input type="text" name="nome" value="<%= registro.nome %>">
-                            <input type="text" name="email" value="<%= registro.email %>">
-                            <input type="text" name="telefone" value="<%= registro.telefone %>">
-                            <% }); %>
-                            <% } else { %>
-                            <p>Nenhum registro encontrado.</p>
-                            <% } %>
-                    </div>
-                </form>
-                  
+                
+
+
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
 </html

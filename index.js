@@ -37,10 +37,11 @@ connection.connect(function(error){
 
 // Listar registro da tabela  do banco de dados Mysql
 app.get('/', (req, res) => {
+    const q = req.query.q || '';
     let registros = [];
   
-    if (req.query.q) {
-      const query = `SELECT * FROM pacientes WHERE nome LIKE '%${req.query.q}%' OR email LIKE '%${req.query.q}%' OR telefone LIKE '%${req.query.q}%'`;
+    if (q) {
+      const query = `SELECT * FROM pacientes WHERE nome LIKE '%${q}%' OR email LIKE '%${q}%' OR telefone LIKE '%${q}%'`;
   
       connection.query(query, (error, results) => {
         if (error) {
@@ -48,13 +49,14 @@ app.get('/', (req, res) => {
           res.send('Erro ao listar registros');
         } else {
           registros = results;
-          res.render('teste', { registros });
+          res.render('teste', { q, registros });
         }
       });
     } else {
-      res.render('teste', { registros });
+      res.render('teste', { q });
     }
   });
+  
 
 
 // carregar a pagina
