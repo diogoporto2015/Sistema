@@ -36,27 +36,25 @@ connection.connect(function(error){
 
 
 // Listar registro da tabela  do banco de dados Mysql
-app.get('/', (req, res) => {
-    const q = req.query.q || '';
-    let registros = [];
+app.get('/', function(req, res) {
+    const search = req.query.search;
   
-    if (q) {
-      const query = `SELECT * FROM pacientes WHERE nome LIKE '%${q}%' OR email LIKE '%${q}%' OR telefone LIKE '%${q}%'`;
+    if (search) {
+      const query = 'SELECT * FROM pacientes WHERE nome = \'' + search + '\'';
   
-      connection.query(query, (error, results) => {
-        if (error) {
-          console.log('Erro ao listar registros', error);
-          res.send('Erro ao listar registros');
-        } else {
-          registros = results;
-          res.render('teste', { q, registros });
-        }
+      connection.query(query, function(err, rows, fields) {
+        if (err) throw err;
+        res.render('teste', { records: rows, search: search });
       });
     } else {
-      res.render('teste', { q });
+      res.render('teste', { search: search });
     }
   });
-  
+
+
+
+
+
 
 
 // carregar a pagina

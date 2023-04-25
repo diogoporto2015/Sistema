@@ -24,9 +24,12 @@
             </div>
 
             <form id="search-form" class="d-flex"  action="/" method="GET">
-                <input class="form-control m-2" type="text" name="q"  placeholder="Pesquisar...">
+                <input class="form-control m-2" type="text" name="search"  placeholder="Pesquisar...">
                 <button type="submit" class="btn btn-primary m-2">Pesquisa</button>
-            </form>                
+            </form>    
+            
+            
+              
 
             <ul class="navbar-nav ">
 
@@ -158,35 +161,9 @@
     <form class="container-sm pt-3 p-5 border bg-white shadow w-75">
 
         <div class="my-3 text-start">
-            <button type="reset" class="btn btn-primary ms-5">Limpar dados</button>
-            
-            <button type="submit" id="cadastrar" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalCadastro">Cadastrar</button>
+          
 
-            <div id="JanelaModalCadastro" name="JanelaModalCadastro" class="modal fade " data-bs-backdrop="static">
-
-                <div class="modal-dialog modal-lg modal-dialog-centered ">
-
-                    <div class="modal-content">
- 
-                        <div class="modal-header align-self-center">
-                            <h2 class="modal-title">Cadastro da Ficha do Paciente</h2>
-                        </div>
-
-                        <div class="modal-body">
-                            <p><h3 class="text-center">PARABÉNS</h3></p>
-                            <p class="text-center">Cadastro realizado com sucesso!</p>
-                            <p class="text-center">Para imprimir a ficha do paciente clique em imprimir.</p>
-                        </div>
-
-                        <div class="modal-footer ">
-                            <button type="button" class="btn btn-primary" >Imprimir</button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal">Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button type="button" id="atualizar" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalAtualizar">Atualizar</button>
+            <button type="button" id="atualizar" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalAtualizar">Novo Exame</button>
 
             <div id="JanelaModalAtualizar" class="modal fade " data-bs-backdrop="static">
 
@@ -195,12 +172,12 @@
                     <div class="modal-content">
  
                         <div class="modal-header align-self-center">
-                            <h2 class="modal-title">Atualização da Ficha do Paciente</h2>
+                            <h2 class="modal-title">Novo Exame</h2>
                         </div>
 
                         <div class="modal-body">
                             <p><h3 class="text-center">PARABÉNS</h3></p>
-                            <p class="text-center">Atualização realizado com sucesso!</p>
+                            <p class="text-center">Um novo exame foi incluído com sucesso!</p>
                             <p class="text-center">Para imprimir a ficha do paciente clique em imprimir.</p>
                         </div>
 
@@ -208,6 +185,7 @@
                             <button type="button" class="btn btn-primary" >Imprimir</button>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal">Fechar</button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -237,36 +215,65 @@
                 </div>
             </div>
 
+            <button type="button" id="sair" class="btn btn-primary ms-5" data-bs-toggle="modal" data-bs-target="#JanelaModalSair">Sair</button>
+
+            <div id="JanelaModalSair" class="modal fade " data-bs-backdrop="static">
+
+                <div class="modal-dialog modal-lg modal-dialog-centered ">
+
+                    <div class="modal-content">
+ 
+                        <div class="modal-header align-self-center">
+                            <h2 class="modal-title">Sair da Pesquisa</h2>
+                        </div>
+
+                        <div class="modal-body">
+                            <p><h3 class="text-center">CONFIRMAÇÃO</h3></p>
+                            <p class="text-center">Para confirmar sua saida é só confirmar.</p>
+                        </div>
+
+                        <div class="modal-footer ">
+                            <button type="button" class="btn btn-primary">Confirmar</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="container-fluid border border-1 border-drak mb-5 p-4 bg-white shadow">
 
-            <div class="row">
-                    
-                <% if (q && registros && registros.length > 0) { %>
-                    <% registros.forEach((registro) => { %>
+                <% if (search) { %>
+                  <p>Você pesquisou por: <%= search %></p>
+                  <% if (records.length === 0) { %>
+                    <p>Nenhum registro encontrado para '<%= search %>'.</p>
+                  <% } else { %>
+                    <ul>
+                      <% records.forEach(function(record) { %>
+                        <div class="row">
+                        <div class="my-3 col-5">
+                            <label class="form-label">Nome:</label>
+                            <input id="nome" class="form-control" type="text" name="nome" value="<%= record.nome %>">
+                        </div>
 
-                <div class="my-3 col-5">
-                    <label class="form-label">Nome:</label>
-                    <input id="nome" class="form-control" type="text" name="nome" value="<%= registro.nome %>">
-                </div>
-            
-                <div class="my-3 col">
-                    <label class="form-label">Email:</label>
-                    <input id="email" class="form-control" type="text" name="email" id="emailInput" value="<%= registro.email %>">
-                </div>
-
-                <div class="my-3 col">
-                    <label class="form-label">Telefone:</label>
-                    <input id="telefone" class="form-control" type="number" name="telefone" value="<%= registro.telefone %>">
-                </div>
-
-                <% }); %>
-                <% } else if (q) { %>
-                <p>Nenhum registro encontrado.</p>
+                        <div class="my-3 col">
+                            <label class="form-label">CPF:</label>
+                            <input id="cpf" class="form-control" type="number" name="cpf" value="<%= record.cpf %>">
+                        </div>
+                        
+                        <div class="my-3 col">
+                            <label class="form-label">RG:</label>
+                            <input id="rg" class="form-control" type="number" name="rg" value="<%= record.rg %>">
+                        </div>
+                    </div>
+                          
+                        
+                      <% }); %>
+                    </ul>
+                  <% } %>
                 <% } %>
-
-            </div>
+                
         </div>
     </form>
 
