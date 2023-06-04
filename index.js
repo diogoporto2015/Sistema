@@ -81,7 +81,7 @@ app.post("/index.html", encoder, (req, res) => {
         if(resultado.length > 0){
             res.redirect("/ficha.html");
         }else {
-            res.redirect("/");
+            res.redirect("/index.html");
         }
         res.end();
     })
