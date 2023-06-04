@@ -247,21 +247,21 @@
                     <ul>
                       <% records.forEach(function(record) { %>
                         <div class="row">
-                        <div class="my-3 col-5">
-                            <label class="form-label">Nome:</label>
-                            <input id="nome" class="form-control" type="text" name="nome" value="<%= record.nome %>">
-                        </div>
+                            <div class="my-3 col-5">
+                                <label class="form-label">Nome:</label>
+                                <input id="nome" class="form-control" type="text" name="nome" value="<%= record.nome %>">
+                            </div>
 
-                        <div class="my-3 col">
-                            <label class="form-label">CPF:</label>
-                            <input id="cpf" class="form-control" type="number" name="cpf" value="<%= record.cpf %>">
+                            <div class="my-3 col">
+                                <label class="form-label">CPF:</label>
+                                <input id="cpf" class="form-control" type="number" name="cpf" value="<%= record.cpf %>">
+                            </div>
+                            
+                            <div class="my-3 col">
+                                <label class="form-label">RG:</label>
+                                <input id="rg" class="form-control" type="number" name="rg" value="<%= record.rg %>">
+                            </div>
                         </div>
-                        
-                        <div class="my-3 col">
-                            <label class="form-label">RG:</label>
-                            <input id="rg" class="form-control" type="number" name="rg" value="<%= record.rg %>">
-                        </div>
-                    </div>
                           
                         
                       <% }); %>
