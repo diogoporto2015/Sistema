@@ -44,20 +44,15 @@ app.get('/', function(req, res) {
   
       connection.query(query, function(err, rows, fields) {
         if (err) throw err;
-        res.render('teste', { records: rows, search: search });
+        res.render('pesquisa', { records: rows, search: search });
       });
     } else {
-      res.render('teste', { search: search });
+      res.render('pesquisa', { search: search });
     }
   });
 
-
-
-
-
-
-
 // carregar a pagina
+
 app.get ("/index.html", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
