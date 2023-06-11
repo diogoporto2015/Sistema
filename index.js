@@ -57,14 +57,28 @@ app.get ("/index.html", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 
-// carregar a pagina
 app.get("/ficha.html", function (req, res){
     res.sendFile(__dirname + "/ficha.html");
 })
 
-// carregar a pagina
+app.get ("/dessiomentria.html", function(req, res) {
+    res.sendFile(__dirname + "/dessiomentria.html");
+});
+
 app.get ("/mamografia.html", function(req, res) {
     res.sendFile(__dirname + "/mamografia.html");
+});
+
+app.get ("/medicoOrtopedia.html", function(req, res) {
+    res.sendFile(__dirname + "/medicoOrtopedia.html");
+});
+
+app.get ("/raoisx.html", function(req, res) {
+    res.sendFile(__dirname + "/raoisx.html");
+});
+
+app.get ("/ultrassonografia.html", function(req, res) {
+    res.sendFile(__dirname + "/ultrassonografia.html");
 });
 
 // logar com os dados do banco de dados do Mysql
