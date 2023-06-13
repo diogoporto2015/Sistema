@@ -77,7 +77,9 @@ app.get ("/raoisx.html", function(req, res) {
     res.sendFile(__dirname + "/raoisx.html");
 });
 
-
+app.get ("/ultrassonografia.html", function(req, res) {
+    res.sendFile(__dirname + "/ultrassonografia.html");
+});
 
 // logar com os dados do banco de dados do Mysql
 app.post("/index.html", encoder, (req, res) => {
