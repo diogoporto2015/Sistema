@@ -6,6 +6,7 @@ const paciente = require("./modulos/Paciente")
 const exame = require("./modulos/Exame")
 const path = require('path');
 const ejs = require('ejs');
+const moment = require('moment');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.get('/', function(req, res) {
   
       connection.query(query, function(err, rows, fields) {
         if (err) throw err;
+        
         res.render('pesquisa', { records: rows, search: search });
       });
     } else {
