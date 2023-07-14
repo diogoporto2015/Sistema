@@ -238,12 +238,12 @@
                             
                             <div class="my-3 col">
                                 <label class="form-label">CPF:</label>
-                                <input id="cpf" class="form-control" type="number" name="cpf" value="<%= record.cpf %>">
+                                <input id="cpf" class="form-control" type="text" name="cpf" value="<%= record.cpf %>">
                             </div>
                             
                             <div class="my-3 col">
                                 <label class="form-label">RG:</label>
-                                <input id="rg" class="form-control" type="number" name="rg" value="<%= record.rg %>">
+                                <input id="rg" class="form-control" type="text" name="rg" value="<%= record.rg %>">
                             </div>
                         </div>
                           
@@ -256,17 +256,17 @@
             
                             <div class="my-3 col">
                                 <label class="form-label">Data de Nascimento:</label>
-                                <input id="data_nascimento" class="form-control" type="text" name="data_nascimento" value="<%= record.data_nascimento %>"  readonly>
+                                <input id="data_nascimento" class="form-control" type="text" name="data_nascimento" value="<%= record.data_nascimento %>"  >
                             </div>
                                         
                             <div class="my-3 col">
                                 <label class="form-label">Telefone:</label>
-                                <input id="telefone" class="form-control" type="tel" name="telefone" value="<%= record.telefone %>">
+                                <input id="telefone" class="form-control" type="text" name="telefone" value="<%= record.telefone %>">
                             </div>
             
                             <div class="my-3 col">
                                 <label class="form-label">Celular:</label>
-                                <input id="celular" class="form-control" type="tel" name="celular" value="<%= record.celular %>">
+                                <input id="celular" class="form-control" type="text" name="celular" value="<%= record.celular %>">
                             </div>
             
                         </div>
@@ -283,12 +283,12 @@
             
                             <div class="my-3 col-2" col>
                                 <label for="peso" class="form-label">Peso:</label>
-                                <input id="peso" class="form-control" type="number" name="peso" value="<%= record.peso %>">
+                                <input id="peso" class="form-control" type="text" name="peso" value="<%= record.peso %>">
                             </div>
             
                             <div class="my-3 col-2 ms-5">
                                 <label class="form-label">Altura:</label>
-                                <input id="altura" class="form-control" type="number" name="altura" value="<%= record.altura %>">
+                                <input id="altura" class="form-control" type="text" name="altura" value="<%= record.altura %>">
                             </div>
             
                         </div>
@@ -435,13 +435,10 @@
                     <label class="form-label">Telefone:</label>
                     <span id="telRecebido" class="form-control"></span>
                 </div>
-    
-                
-                <div class="my-3 col-2">
-                    <label class="form-label"></label>
-                </div>
-                <div class="my-3 col-2">
-                    <label class="form-label"></label>
+
+                <div class="my-3 col-4">
+                    <label class="form-label">Celular:</label>
+                    <span id="celRecebido" class="form-control"></span>
                 </div>
     
             </div>
@@ -507,16 +504,28 @@
         
     </div>
 
-    
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script>
+        $('#cpf').mask('000.000.000-00', {reverse: true});
+        $('#rg').mask('00000000-0', {reverse: true});
+        $('#data_nascimento').mask('00/00/0000');
+        $('#celular').mask('(00) 00000-0000');
+        $('#telefone').mask('(00) 0000-0000');
+        $('#cep').mask('00000-000');
+        $('#peso').mask('000 kg', {reverse: true});
+        $('#altura').mask('0,00 cm', {reverse: true});
+        $('#numero').mask('00.000', {reverse: true});
+       
+   </script>
+
 
 </body>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 <script src="./js/print.js"></script>
 <script src="./js/blockInput.js"></script>
-
 
 </html
 
