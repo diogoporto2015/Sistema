@@ -218,15 +218,18 @@
 
         <div class="container-fluid border border-1 border-drak mb-5 p-4 bg-white shadow">
 
-                <% if (search) { %>
+            <% if (search) { %>
                   <p>Você pesquisou por: <%= search %></p> 
                   <% if (records.length === 0) { %>
                   <p>Nenhum registro encontrado para '<%= search %>'.</p> 
                   <% } else { %>
                     <ul>
                       <% records.forEach(function(record) { %>
-                        <div class="my-3 col-2">
-                            <label class="form-label">Registro Cliente:</label>
+                        
+                        <div class="registro">
+                            <i>Registro Cliente:</i>
+                        </div>
+                        <div class="my-3 col-1">
                             <input id="id_paciente" class="form-control" type="text" name="id_paciente" value="<%= record.id_paciente %>" readonly>
                         </div>
                         <div class="row">
@@ -390,37 +393,38 @@
         <div class="">
     
             <img src="./imagens/medimagem2.png" alt=""> <br>
-    
+
+            <h1>FICHA DO CLIENTE</h1> 
+            <div class="data">
+                <div><h6><p>Data: <span id="dataRecebe"></span></p></h6></div>
+                <div><h6><p>Idade: <span id="idadeRecebido"></span></p></h6></div>
+            </div>
+        </div>
             <div class="row">
-    
-                <h1>FICHA DO CLIENTE</h1> 
-                <h6><p>Data: <span id="dataRecebe"></span></p></h6>
-    
-                    <div class="my-3 col-7">
+                    <div class="my-3 col-6">
                         <label class="form-label">Nome:</label>
                         <span id="nomeRecebido" class="form-control"></span>
                     </div>
+
+                    <div class="my-3 col-3">
+                        <label class="form-label">Data de Nasc.:</label>
+                        <span id="nascRecebido" class="form-control"></span>
+                    </div>
     
-                    <div class="my-3 col">
+                    <div class="my-3 col-3">
                         <label id="div2" class="form-label">CPF:</label>
                         <span id="cpfRecebido" class="form-control"></span>
                     </div>
-    
-                    <div class="my-3 col-1">
-                        <label class="form-label">Idade:</label>
-                        <span id="idadeRecebido" class="form-control"></span>
-                    </div>
+
+                    
                         
             </div>
     
             <div class="row">
 
-                <div class="my-3 col-3">
-                    <label class="form-label">Data de Nasc.:</label>
-                    <span id="nascRecebido" class="form-control"></span>
-                </div>
+               
 
-                <div class="my-3 col-2">
+                <div class="my-3 col-4">
                     <label class="form-label">Sexo:</label>
                     <span id="sexoRecebido" class="form-control"></span>
                 </div>
@@ -430,7 +434,7 @@
                     <span id="celRecebido" class="form-control"></span>
                 </div>
     
-                <div class="my-3 col-3">
+                <div class="my-3 col-4">
                     <label class="form-label">Telefone:</label>
                     <span id="telRecebido" class="form-control"></span>
                 </div>
@@ -453,18 +457,18 @@
                 <div class="my-3 col">
                     <label class="form-label">Bairro:</label>
                     <span id="bairroRecebido" class="form-control"></span>
-                    
                 </div>
-            </div>
-
-            <div class="row">    
 
                 <div class="my-3 col">
                     <label class="form-label">Cidade:</label>
                     <span id="cidadeRecebido" class="form-control"></span>
                 </div>
 
-                <div class="my-3 col">
+            </div>
+
+            <div class="row">    
+
+                <div class="my-3 col-3">
                     <label class="form-label">Estado:</label>
                     <span id="estadoRecebido" class="form-control"></span>
                 </div>

@@ -2,7 +2,6 @@
     padding: o;
     margin: 0;
  }
-
  
  .print{
     display: none;
@@ -31,7 +30,7 @@
  }
 
  .print h6{
-    text-align: cent;
+    text-align: center;
  }
 
  @media print{
@@ -44,7 +43,29 @@
  }
 
 .container-fluid p {
-   
    text-align: center;
    color: red;
 }
+
+.registro {
+   margin-top: -40px;
+   
+}
+
+#id_paciente {
+   margin-top: -50px;
+   margin-left: 120px;
+   text-align: center;
+}
+
+.data{
+   display: flex;
+   justify-content: center;
+}
+
+.data p {
+   margin-left: 20px;
+   
+}
+
+

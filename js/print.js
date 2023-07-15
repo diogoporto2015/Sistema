@@ -1,5 +1,6 @@
 function imprimirFicha(){
     document.getElementById('dataRecebe').innerHTML = dataAtual();
+    document.getElementById('idadeRecebido').innerHTML = document.getElementById('email').value;
     document.getElementById('nomeRecebido').innerHTML = document.getElementById('nome').value;
     document.getElementById('cpfRecebido').innerHTML = document.getElementById('cpf').value;
     document.getElementById('nascRecebido').innerHTML= document.getElementById('data_nascimento').value;
