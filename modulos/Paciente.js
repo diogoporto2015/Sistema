@@ -20,7 +20,7 @@ const Paciente = db.sequelize.define('paciente', {
         allowNull: false,
     },
     data_nascimento: {
-        type: db.Sequelize.STRING,
+        type: db.Sequelize.DATE,
         allowNull: false,
     },
     sexo: {
