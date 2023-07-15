@@ -3,10 +3,7 @@
     margin: 0;
  }
 
- .dados{
-    padding: 20px;
- }
-
+ 
  .print{
     display: none;
     margin: 10px;
@@ -45,3 +42,9 @@
         display: none;
     }
  }
+
+.container-fluid p {
+   
+   text-align: center;
+   color: red;
+}

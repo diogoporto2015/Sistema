@@ -10,6 +10,7 @@ function imprimirFicha(){
     document.getElementById('estadoRecebido').innerHTML = document.getElementById('estado').value;
     document.getElementById('telRecebido').innerHTML = document.getElementById('telefone').value;
     document.getElementById('celRecebido').innerHTML = document.getElementById('celular').value;
+    document.getElementById('sexoRecebido').innerHTML = document.getElementById('sexo').value;
     document.getElementById('nomeExameRecebido').innerHTML = document.getElementById('nome_exame').value;
     document.getElementById('tipoExameRecebio').innerHTML = document.getElementById('tipo_exame').value;
     document.getElementById('convRecebido').innerHTML = document.getElementById('convenio').value;
