@@ -6,20 +6,21 @@
  .print{
     display: none;
     margin: 10px;
-    padding: 20px;  
+    padding: 0px;  
  }
 
  .print img{
-    display: block;
+    display: flex;
     margin: auto;
     border-radius: 40px;
-    width: 60px;  
+    width: 80px;  
  }
 
  .print h1{
     border-bottom: 1px solid black;
     margin-bottom: 20px;
     text-align: center;
+    
  }
 
  .print h4{
@@ -60,7 +61,6 @@
 
 .data{
    display: flex;
-   
 }
 
 .data p {
@@ -68,16 +68,15 @@
    
 }
 
-.registro{
-   margin-top: 0px;
-   margin-left: -100px;
+.registroprint{
+  margin-left: -150px;
 }
 
 .data{
-   margin-left: 80px;
+   margin-left: 130px;
    
 }
 
 .idade{
-   
+   margin-left: 130px;
 }
