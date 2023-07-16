@@ -1,6 +1,8 @@
+//Função para informar odados para imprimir o documento
 function imprimirFicha(){
+    document.getElementById('registroRecebe').innerHTML = document.getElementById('id_paciente').value;
+    document.getElementById('idadeRecebido').innerHTML = calcIdade(); 
     document.getElementById('dataRecebe').innerHTML = dataAtual();
-    document.getElementById('idadeRecebido').innerHTML = document.getElementById('email').value;
     document.getElementById('nomeRecebido').innerHTML = document.getElementById('nome').value;
     document.getElementById('cpfRecebido').innerHTML = document.getElementById('cpf').value;
     document.getElementById('nascRecebido').innerHTML= document.getElementById('data_nascimento').value;
@@ -18,11 +20,40 @@ function imprimirFicha(){
     window.print();
 }
 
-
+// Função para mostrar o data Atual
 function dataAtual(){
     let data = new Date();
     return data.getDate() +"/"+ (data.getMonth()+1) +"/"+ data.getFullYear();
 }
 
 
+ // Função para calcular a idade
+function calcIdade(){
+
+    var dataAtual = new Date()
+    var dataNascimento = new Date(document.getElementById('data_nascimento').value)
     
+
+    //Subtração dos anos
+    var anos = dataAtual.getFullYear() - dataNascimento.getFullYear()
+
+    //Análise dos meses
+    if(dataAtual.getMonth() != dataNascimento.getMonth()){
+
+        //Verificar a diferença nos meses
+        if(dataAtual.getMonth() < dataNascimento.getMonth()){
+            anos--;
+        }
+    }
+    else{
+        //Análise do dia do mês 
+        if(dataAtual.getDate() < data_nascimento()){
+            anos--;
+        }
+    }
+
+    let resultadoFinal = ``
+    
+    return resultadoFinal =  `${anos}  anos`
+    
+}

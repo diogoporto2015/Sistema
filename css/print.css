@@ -60,7 +60,7 @@
 
 .data{
    display: flex;
-   justify-content: center;
+   
 }
 
 .data p {
@@ -68,4 +68,16 @@
    
 }
 
+.registro{
+   margin-top: 0px;
+   margin-left: -100px;
+}
 
+.data{
+   margin-left: 80px;
+   
+}
+
+.idade{
+   
+}
