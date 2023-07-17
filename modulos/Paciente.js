@@ -28,19 +28,19 @@ const Paciente = db.sequelize.define('paciente', {
         allowNull: false,
     },
     peso: {
-        type: db.Sequelize.INTEGER
+        type: db.Sequelize.STRING,
     },
     altura: {
-        type: db.Sequelize.INTEGER
+        type: db.Sequelize.STRING,
     },
     telefone: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.STRING,
     },
     celular: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.STRING,
     },
     email: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.STRING,
     },
     endereco: {
         type: db.Sequelize.STRING,
@@ -51,7 +51,7 @@ const Paciente = db.sequelize.define('paciente', {
         allowNull: false,
     },
     complemento: {
-        type: db.Sequelize.STRING
+        type: db.Sequelize.STRING,
     },
     bairro: {
         type: db.Sequelize.STRING,
@@ -66,7 +66,7 @@ const Paciente = db.sequelize.define('paciente', {
         allowNull: false,
     },
     cep: {
-        type: db.Sequelize.INTEGER(30)
+        type: db.Sequelize.STRING
     }
 })
 

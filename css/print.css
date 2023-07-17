@@ -44,7 +44,7 @@
  }
 
 .container-fluid p {
-   text-align: center;
+   text-align: end;
    color: red;
 }
 

@@ -2,10 +2,10 @@
 function imprimirFicha(){
     document.getElementById('registroRecebe').innerHTML = document.getElementById('id_paciente').value;
     document.getElementById('idadeRecebido').innerHTML = calcIdade(); 
-    document.getElementById('dataRecebe').innerHTML = dataAtual();
+    document.getElementById('dataRecebe').innerHTML = dataAt();
     document.getElementById('nomeRecebido').innerHTML = document.getElementById('nome').value;
     document.getElementById('cpfRecebido').innerHTML = document.getElementById('cpf').value;
-    document.getElementById('nascRecebido').innerHTML= document.getElementById('data_nascimento').value;
+    document.getElementById('nascRecebido').innerText = dataNascimentoFormatada;
     document.getElementById('endRecebido').innerHTML = document.getElementById('endereco').value;
     document.getElementById('numRecebido').innerHTML = document.getElementById('numero').value;
     document.getElementById('bairroRecebido').innerHTML = document.getElementById('bairro').value;
@@ -21,10 +21,36 @@ function imprimirFicha(){
 }
 
 // Função para mostrar o data Atual
-function dataAtual(){
+function dataAt(){
     let data = new Date();
     return data.getDate() +"/"+ (data.getMonth()+1) +"/"+ data.getFullYear();
 }
+
+
+//data de nascimento do banco de dados e armazenado em uma variável.
+const dataNascimentoDB = document.getElementById('data_nascimento').value; // Data de nascimento do banco de dados.
+
+// Função para formatar a data de nascimento no formato "DD/MM/YYYY".
+function formatarDataNascimento(dataNascimento) {
+    const dataPartes = dataNascimento.split("-");
+    const ano = dataPartes[0];
+    const mes = dataPartes[1];
+    const dia = dataPartes[2];
+    
+// Formata a data para "DD/MM/YYYY".
+    const dataFormatada = `${dia}/${mes}/${ano}`;
+
+            return dataFormatada;
+        }
+
+        // Utiliza a função para formatar a data de nascimento.
+        const dataNascimentoFormatada = formatarDataNascimento(dataNascimentoDB);
+
+        document.getElementById("dataNascimentoFormatada").innerText = dataNascimentoFormatada;
+
+
+
+
 
 
  // Função para calcular a idade
@@ -32,6 +58,7 @@ function calcIdade(){
 
     var dataAtual = new Date()
     var dataNascimento = new Date(document.getElementById('data_nascimento').value)
+    
     
 
     //Subtração dos anos
@@ -57,3 +84,6 @@ function calcIdade(){
     return resultadoFinal =  `${anos}  anos`
     
 }
+
+
+
