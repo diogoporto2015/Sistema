@@ -218,12 +218,12 @@
         <div class="container-fluid border border-1 border-drak mb-5 p-4 bg-white shadow">
             
             <% if (search) { %>
-                  <p>Você pesquisou por: <%= search %></p> 
-                  <% if (records.length === 0) { %>
-                  <p>Nenhum registro encontrado para '<%= search %>'.</p> 
-                  <% } else { %>
-                    <ul>
-                      <% records.forEach(function(record) { %>
+                <p>Você pesquisou por: <%= search %></p> 
+                <% if (records.length === 0) { %>
+                <p>Nenhum registro encontrado para '<%= search %>'.</p> 
+                <% } else { %>
+                  <ul>
+                    <% records.forEach(function(record) { %>
                         
                         <div class="registro">
                             <i>Registro Cliente:</i>
@@ -257,7 +257,7 @@
             
                             <div class="my-3 col">
                                 <label class="form-label">Data de Nascimento:</label>
-                                <input id="data_nascimento" class="form-control" type="text" name="data_nasc" value="<%= record.data_nascimento %>" readonly>
+                                <input id="data_nascimento" class="form-control" type="text" name="data_nasc" value="<%= record.data_nascimento %>" onchange="formatarData()" readonly>
                             </div>
                                         
                             <div class="my-3 col">
@@ -331,7 +331,7 @@
 
                 <div class="my-3 col">
                     <label class="form-label">CEP:</label>
-                    <input id="cep" class="form-control" type="number" name="cep" value="<%= record.cep %>" readonly>
+                    <input id="cep" class="form-control" type="text" name="cep" value="<%= record.cep %>" readonly>
                 </div>
 
             </div>
@@ -379,10 +379,10 @@
             </div>
         </div>
                         
-                      <% }); %>
+        <% }); %>
                     </ul>
                   <% } %>
-                <% } %>
+                <% } %>        
                 
         </div>
 
@@ -518,6 +518,7 @@
         </div>
         
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>

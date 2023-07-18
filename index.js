@@ -36,23 +36,52 @@ connection.connect(function(error){
     console.log("Conectado ao banco de dados com Sucesso!")
 });
 
-
 // Listar registro da tabela  do banco de dados Mysql
 app.get('/', function(req, res) {
     const search = req.query.search;
   
     if (search) {
-      const query = 'SELECT * FROM pacientes WHERE nome = \'' + search + '\'';
+      const query = 'SELECT *, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento FROM pacientes WHERE nome = \'' + search + '\'';
   
       connection.query(query, function(err, rows, fields) {
         if (err) throw err;
         
         res.render('pesquisa', { records: rows, search: search });
       });
+
     } else {
       res.render('pesquisa', { search: search });
     }
   });
+
+
+
+
+
+
+
+
+
+
+// Rota para exibir a lista de registros na página HTML
+app.get('/', (req, res) => {
+    // Obtenha o valor da barra de pesquisa
+    const searchTerm = req.query.search || '';
+  
+    // Consulta para obter os registros filtrados da tabela 'usuarios'
+    const sqlQuery = 'SELECT *, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento FROM pacientes WHERE nome = ?';
+  
+    connection.query(sqlQuery, [searchTerm], (err, results) => {
+      if (err) {
+        console.error('Erro ao executar a consulta:', err);
+        return;
+      }
+  
+      // Renderize a página HTML usando o template engine EJS e envie os resultados para a página
+      res.render('pesquisa', { records: results });
+    });
+  });
+
 
 // carregar a pagina
 

@@ -1,16 +1,19 @@
+const moment = require('moment');
+
 //Função para informar odados para imprimir o documento
 function imprimirFicha(){
     document.getElementById('registroRecebe').innerHTML = document.getElementById('id_paciente').value;
-    document.getElementById('idadeRecebido').innerHTML = calcIdade(); 
+    document.getElementById('idadeRecebido').innerHTML = calcularIdade(); 
     document.getElementById('dataRecebe').innerHTML = dataAt();
     document.getElementById('nomeRecebido').innerHTML = document.getElementById('nome').value;
     document.getElementById('cpfRecebido').innerHTML = document.getElementById('cpf').value;
-    document.getElementById('nascRecebido').innerText = dataNascimentoFormatada;
+    document.getElementById('nascRecebido').innerText = document.getElementById('data_nascimento').value;
     document.getElementById('endRecebido').innerHTML = document.getElementById('endereco').value;
     document.getElementById('numRecebido').innerHTML = document.getElementById('numero').value;
     document.getElementById('bairroRecebido').innerHTML = document.getElementById('bairro').value;
     document.getElementById('cidadeRecebido').innerHTML = document.getElementById('cidade').value;
     document.getElementById('estadoRecebido').innerHTML = document.getElementById('estado').value;
+    
     document.getElementById('telRecebido').innerHTML = document.getElementById('telefone').value;
     document.getElementById('celRecebido').innerHTML = document.getElementById('celular').value;
     document.getElementById('sexoRecebido').innerHTML = document.getElementById('sexo').value;
@@ -20,6 +23,25 @@ function imprimirFicha(){
     window.print();
 }
 
+/*
+function formatarData() {
+    const dataInput = document.getElementById("data_nascimento").value;
+  
+    // Verifica se o valor é uma data no formato AAAA-MM-DD
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dataInput)) {
+      
+      // Formata a data para DD/MM/AAAA
+      const dataFormatada = `${dataInput.substr(8, 2)}/${dataInput.substr(5, 2)}/${dataInput.substr(0, 4)}`;
+    
+      // Atualiza o valor do input com a data formatada
+      document.getElementById("data_nascimento").value = dataFormatada;
+    } else {
+      // Caso o valor não seja válido, você pode lidar com isso de acordo com sua necessidade.
+      // Neste exemplo, não faremos nada.
+    }
+  }
+*/
+
 // Função para mostrar o data Atual
 function dataAt(){
     let data = new Date();
@@ -27,32 +49,55 @@ function dataAt(){
 }
 
 
-//data de nascimento do banco de dados e armazenado em uma variável.
-const dataNascimentoDB = document.getElementById('data_nascimento').value; // Data de nascimento do banco de dados.
 
-// Função para formatar a data de nascimento no formato "DD/MM/YYYY".
-function formatarDataNascimento(dataNascimento) {
-    const dataPartes = dataNascimento.split("-");
-    const ano = dataPartes[0];
-    const mes = dataPartes[1];
-    const dia = dataPartes[2];
+// Função para formatar a data de nascimento
+function dataFor(){
+    const dataInput = document.getElementById('data_nascimento').value;
+    const dataObj = new Date(dataInput);
+    const dataFormatada = `${dataObj.getDate()}/${dataObj.getMonth() + 1}/${dataObj.getFullYear()}`;
+
+    return dataFormatada;  // Saída: 18/07/2023
+}
+
+// Função para calcular a idade
+function calcularIdade() {
+    var dataNascimentoStr = document.getElementById("data_nascimento").value;
+    var dataNascimentoParts = dataNascimentoStr.split('/');
+    var dataNascimento = new Date(
+        parseInt(dataNascimentoParts[2]),
+        parseInt(dataNascimentoParts[1]) - 1,
+        parseInt(dataNascimentoParts[0])
+    );
     
-// Formata a data para "DD/MM/YYYY".
-    const dataFormatada = `${dia}/${mes}/${ano}`;
+    var hoje = new Date();
+    var diff = hoje - dataNascimento;
 
-            return dataFormatada;
-        }
+    if (isNaN(dataNascimento) || diff < 0) {
+        alert("Data de Nascimento inválida. Certifique-se de digitar no formato dd/mm/aaaa e uma data anterior à data atual.");
+        return;
+    }
 
-        // Utiliza a função para formatar a data de nascimento.
-        const dataNascimentoFormatada = formatarDataNascimento(dataNascimentoDB);
-
-        document.getElementById("dataNascimentoFormatada").innerText = dataNascimentoFormatada;
-
-
-
-
+    var idade = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+ 
+    let resultadoFinal = ``
+    
+    return resultadoFinal =  `${idade}  anos`
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/*
  // Função para calcular a idade
 function calcIdade(){
 
@@ -74,7 +119,7 @@ function calcIdade(){
     }
     else{
         //Análise do dia do mês 
-        if(dataAtual.getDate() < data_nascimento()){
+        if(dataAtual.getDate() < dataNascimento.get()){
             anos--;
         }
     }
@@ -84,6 +129,5 @@ function calcIdade(){
     return resultadoFinal =  `${anos}  anos`
     
 }
-
-
+*/
 
