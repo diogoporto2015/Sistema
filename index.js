@@ -130,7 +130,7 @@ app.post("/index.html", encoder, (req, res) => {
 
 // Cadastra Ficha de Pacientes e exames
 app.post('/Ficha.html', function(req, res){
-    paciente.create({
+    paciente.create({ 
         nome: req.body.nome,
         cpf: req.body.cpf,
         rg: req.body.rg,
@@ -155,7 +155,7 @@ app.post('/Ficha.html', function(req, res){
         data_exame: req.body.data_exame,
         data_entrega: req.body.data_entrega,
         convenio: req.body.convenio,
-        medico: req.body.altura
+        medico: req.body.medico
     }).then(function(){
         res.sendFile(path.join(__dirname+ '/Ficha.html'));
     }).catch(function(erro){

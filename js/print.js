@@ -1,5 +1,3 @@
-const moment = require('moment');
-
 //Função para informar odados para imprimir o documento
 function imprimirFicha(){
     document.getElementById('registroRecebe').innerHTML = document.getElementById('id_paciente').value;
@@ -13,7 +11,7 @@ function imprimirFicha(){
     document.getElementById('bairroRecebido').innerHTML = document.getElementById('bairro').value;
     document.getElementById('cidadeRecebido').innerHTML = document.getElementById('cidade').value;
     document.getElementById('estadoRecebido').innerHTML = document.getElementById('estado').value;
-    
+    document.getElementById('cepRecebido').innerHTML = document.getElementById('cep').value;
     document.getElementById('telRecebido').innerHTML = document.getElementById('telefone').value;
     document.getElementById('celRecebido').innerHTML = document.getElementById('celular').value;
     document.getElementById('sexoRecebido').innerHTML = document.getElementById('sexo').value;
@@ -23,24 +21,7 @@ function imprimirFicha(){
     window.print();
 }
 
-/*
-function formatarData() {
-    const dataInput = document.getElementById("data_nascimento").value;
-  
-    // Verifica se o valor é uma data no formato AAAA-MM-DD
-    if (/^\d{4}-\d{2}-\d{2}$/.test(dataInput)) {
-      
-      // Formata a data para DD/MM/AAAA
-      const dataFormatada = `${dataInput.substr(8, 2)}/${dataInput.substr(5, 2)}/${dataInput.substr(0, 4)}`;
-    
-      // Atualiza o valor do input com a data formatada
-      document.getElementById("data_nascimento").value = dataFormatada;
-    } else {
-      // Caso o valor não seja válido, você pode lidar com isso de acordo com sua necessidade.
-      // Neste exemplo, não faremos nada.
-    }
-  }
-*/
+
 
 // Função para mostrar o data Atual
 function dataAt(){
