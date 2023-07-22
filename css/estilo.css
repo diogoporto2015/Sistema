@@ -5,14 +5,14 @@
 #denssiometria {
     
     font-size: 14px;
-    max-width: 1100px;
+    width: 95%;
     margin: 0 auto;
     max-height: 730px;
   }
 
 .agenda {
     box-shadow: 0px 3px 10px #464646;
-    max-width: 1150px;
+    width: 80%;
     margin: 0px auto;
     padding:5px;
     border-radius: 10px;
@@ -34,14 +34,14 @@
 #mamografia {
     
     font-size: 14px;
-    max-width: 1100px;
+    width: 95%;
     margin: 0 auto;
     max-height: 730px;
   }
 
 .agenda2 {
     box-shadow: 0px 3px 10px #464646;
-    max-width: 1150px;
+    width: 80%;
     margin: 0px auto;
     padding:5px;
     border-radius: 10px;
@@ -63,14 +63,14 @@
 #medicoOrtopedia {
     
     font-size: 14px;
-    max-width: 1100px;
+    width: 95%;
     margin: 0 auto;
     max-height: 730px;
   }
 
 .agenda3 {
     box-shadow: 0px 3px 10px #464646;
-    max-width: 1150px;
+    width: 80%;
     margin: 0px auto;
     padding:5px;
     border-radius: 10px;
@@ -92,14 +92,14 @@
 #raiosx {
     
     font-size: 14px;
-    max-width: 1100px;
+    width: 95%;
     margin: 0 auto;
     max-height: 730px;
   }
 
 .agenda4 {
     box-shadow: 0px 3px 10px #464646;
-    max-width: 1150px;
+    width: 80%;
     margin: 0px auto;
     padding:5px;
     border-radius: 10px;
@@ -121,14 +121,14 @@
 #ultrassonografia {
     
     font-size: 14px;
-    max-width: 1100px;
+    width: 95%;
     margin: 0 auto;
     max-height: 730px;
   }
 
 .agenda5 {
     box-shadow: 0px 3px 10px #464646;
-    max-width: 1150px;
+    width: 80%;
     margin: 0px auto;
     padding:5px;
     border-radius: 10px;
