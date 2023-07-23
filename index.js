@@ -41,7 +41,7 @@ app.get('/', function(req, res) {
     const search = req.query.search;
   
     if (search) {
-      const query = 'SELECT *, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento FROM pacientes WHERE nome = \'' + search + '\'';
+      const query = 'SELECT pacientes.*, exames.*, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento, DATE_FORMAT(data_exame, "%d/%m/%Y") AS data_exame,DATE_FORMAT(data_entrega, "%d/%m/%Y") AS data_entrega FROM pacientes inner join exames on pacientes.exame_id = exames.id_exame WHERE nome = \'' + search + '\'';
   
       connection.query(query, function(err, rows, fields) {
         if (err) throw err;
@@ -62,7 +62,7 @@ app.get('/', function(req, res) {
 
 
 
-
+/*
 // Rota para exibir a lista de registros na página HTML
 app.get('/', (req, res) => {
     // Obtenha o valor da barra de pesquisa
@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
       res.render('pesquisa', { records: results });
     });
   });
-
+*/
 
 // carregar a pagina
 

@@ -18,6 +18,7 @@ function imprimirFicha(){
     document.getElementById('nomeExameRecebido').innerHTML = document.getElementById('nome_exame').value;
     document.getElementById('tipoExameRecebio').innerHTML = document.getElementById('tipo_exame').value;
     document.getElementById('convRecebido').innerHTML = document.getElementById('convenio').value;
+    document.getElementById('recebeComentario').innerHTML = document.getElementById('comentario').value;
     window.print();
 }
 
