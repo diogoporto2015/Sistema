@@ -84,7 +84,7 @@ app.get ("/raoisx.html", function(req, res) {
 app.get ("/ultrassonografia.html", function(req, res) {
     res.sendFile(__dirname + "/ultrassonografia.html");
 });
-/*
+
 // Cadastra Ficha de Pacientes e exames
 app.post('/Ficha.html', function(req, res){
     paciente.create({ 
@@ -105,7 +105,7 @@ app.post('/Ficha.html', function(req, res){
         cidade: req.body.cidade,
         estado: req.body.estado,
         cep: req.body.cep
-    }),exame.create({
+    }),exame.create({ 
         tipo_exame: req.body.tipo_exame,
         nome_exame: req.body.nome_exame,
         comentario: req.body.comentario,
@@ -120,7 +120,7 @@ app.post('/Ficha.html', function(req, res){
         return  
     })
 })
-*/
+
 
 // Rota para inserir dados na tabela 'pessoas'
 app.post('/ficha.html', (req, res) => {

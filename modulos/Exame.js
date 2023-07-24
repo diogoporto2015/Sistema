@@ -8,7 +8,12 @@ const Exame = db.sequelize.define('exame', {
         allowNull: false,
         primaryKey: true
     },
-   
+    //paciente_id: {
+       // type : db.Sequelize.INTEGER,
+        //autoIncrement: true,
+        //allowNull: false,
+        //primaryKey: true
+    //},
     tipo_exame: {
         type : db.Sequelize.STRING,
         allowNull: false,
@@ -38,7 +43,7 @@ const Exame = db.sequelize.define('exame', {
     }
 })
 
-
+//Exame.belongsTo(Paciente, { foreignKey: 'paciente_id' });
 
 
 // Cria a tabela Usuarios
