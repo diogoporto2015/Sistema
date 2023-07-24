@@ -41,7 +41,7 @@ app.get('/', function(req, res) {
     const search = req.query.search;
   
     if (search) {
-      const query = 'SELECT pacientes.*, exames.*, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento, DATE_FORMAT(data_exame, "%d/%m/%Y") AS data_exame,DATE_FORMAT(data_entrega, "%d/%m/%Y") AS data_entrega FROM pacientes inner join exames on pacientes.exame_id = exames.id_exame WHERE nome = \'' + search + '\'';
+      const query = 'SELECT pacientes.*, exames.*, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento, DATE_FORMAT(data_exame, "%d/%m/%Y") AS data_exame,DATE_FORMAT(data_entrega, "%d/%m/%Y") AS data_entrega FROM exames inner join pacientes on exames.paciente_id = pacientes.id_paciente  WHERE nome = \'' + search + '\'';
   
       connection.query(query, function(err, rows, fields) {
         if (err) throw err;
@@ -54,34 +54,6 @@ app.get('/', function(req, res) {
     }
   });
 
-
-
-
-
-
-
-
-
-/*
-// Rota para exibir a lista de registros na página HTML
-app.get('/', (req, res) => {
-    // Obtenha o valor da barra de pesquisa
-    const searchTerm = req.query.search || '';
-  
-    // Consulta para obter os registros filtrados da tabela 'usuarios'
-    const sqlQuery = 'SELECT *, DATE_FORMAT(data_nascimento, "%d/%m/%Y") AS data_nascimento FROM pacientes WHERE nome = ?';
-  
-    connection.query(sqlQuery, [searchTerm], (err, results) => {
-      if (err) {
-        console.error('Erro ao executar a consulta:', err);
-        return;
-      }
-  
-      // Renderize a página HTML usando o template engine EJS e envie os resultados para a página
-      res.render('pesquisa', { records: results });
-    });
-  });
-*/
 
 // carregar a pagina
 
@@ -112,22 +84,7 @@ app.get ("/raoisx.html", function(req, res) {
 app.get ("/ultrassonografia.html", function(req, res) {
     res.sendFile(__dirname + "/ultrassonografia.html");
 });
-
-// logar com os dados do banco de dados do Mysql
-app.post("/index.html", encoder, (req, res) => {
-    var nome = req.body.nome;
-    var senha = req.body.senha;
-
-    connection.query("select * from usuarios where nome = ? and senha = ?", [nome, senha], (error, resultado, fields) => {
-        if(resultado.length > 0){
-            res.redirect("/ficha.html");
-        }else {
-            res.redirect("/index.html");
-        }
-        res.end();
-    })
-})
-
+/*
 // Cadastra Ficha de Pacientes e exames
 app.post('/Ficha.html', function(req, res){
     paciente.create({ 
@@ -163,7 +120,24 @@ app.post('/Ficha.html', function(req, res){
         return  
     })
 })
+*/
 
+// Rota para inserir dados na tabela 'pessoas'
+app.post('/ficha.html', (req, res) => {
+    const { nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep} = req.body;
+  
+    const insertQuery = `
+      INSERT INTO pessoas (nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep) VALUES (?, ?)
+    `;
+  
+    connection.query(insertQuery, [nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep], (err, result) => {
+      if (err) throw err;
+      console.log('Pessoa inserida com sucesso');
+      res.redirect('/ficha.html'); // Redirecionar para a página do formulário após a inserção
+    });
+  });
+
+  
 
 
 

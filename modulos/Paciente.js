@@ -1,5 +1,6 @@
 const db = require('./db')
 
+
 const Paciente = db.sequelize.define('paciente', {
     id_paciente: {
         type : db.Sequelize.INTEGER,
@@ -47,7 +48,7 @@ const Paciente = db.sequelize.define('paciente', {
         allowNull: false,
     },
     numero: {
-        type: db.Sequelize.INTEGER,
+        type: db.Sequelize.STRING,
         allowNull: false,
     },
     complemento: {

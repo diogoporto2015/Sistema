@@ -8,6 +8,7 @@ const Exame = db.sequelize.define('exame', {
         allowNull: false,
         primaryKey: true
     },
+   
     tipo_exame: {
         type : db.Sequelize.STRING,
         allowNull: false,
