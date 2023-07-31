@@ -32,10 +32,10 @@ app.get ("/ficha.html", function(req, res) {
 app.post('/cadastrar', (req, res) => {
   const { nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep, tipo_exame, nome_exame, data_exame, data_entrega, convenio, medico, comentario } = req.body;
 
-
-// Verificar se o nome já existe na tabela1
+// Verificar se o nome já existe na pacientes
 const checkQuery = `SELECT nome FROM pacientes WHERE nome = ?`;
 const checkValues = [nome];
+
 
 connection.query(checkQuery, checkValues, (err, results) => {
   if (err) {
@@ -74,8 +74,8 @@ connection.query(checkQuery, checkValues, (err, results) => {
       }
 
       console.log('Dados cadastrados com sucesso!');
-       // Redirecionar para a página de sucesso após o cadastro ser concluído com êxito
-       res.json({ success: true });
+      // Redirecionar para a página de sucesso após o cadastro ser concluído com êxito
+      res.redirect('/ficha.html');
     });
   });
 });
