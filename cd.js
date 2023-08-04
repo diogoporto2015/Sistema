@@ -32,6 +32,7 @@ app.get ("/ficha.html", function(req, res) {
 app.post('/cadastrar', (req, res) => {
   const { nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep, tipo_exame, nome_exame, data_exame, data_entrega, convenio, medico, comentario } = req.body;
 
+//Cadastro de tabela relacionada Pacientes e Exames no Mysql - inicio do código
 // Verificar se o nome já existe na pacientes
 const checkQuery = `SELECT nome FROM pacientes WHERE nome = ?`;
 const checkValues = [nome];
@@ -49,7 +50,6 @@ connection.query(checkQuery, checkValues, (err, results) => {
     return res.json({ error: 'O nome já está cadastrado. Por favor, use um nome diferente.' });
   }
   
-
   // Query para inserir os dados na primeira tabela
   const query1 = `INSERT INTO pacientes (nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   const values1 = [nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep];
@@ -80,6 +80,13 @@ connection.query(checkQuery, checkValues, (err, results) => {
   });
 });
 });
+//Cadastro de tabela relacionada Pacientes e exames no Mysql - fim do código
+
+
+
+
+
+
 
 // Inicie o servidor
 app.listen(8080);
