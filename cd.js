@@ -7,6 +7,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
+//Inseri aparencia, imagens comando dos butões em js
+app.use('/css', express.static('css'));
+app.use('/imagens', express.static('imagens'));
+
+
 // Configurações de conexão
 const connection = mysql.createConnection({
   host: "192.168.1.66",
@@ -30,7 +35,7 @@ app.get ("/ficha.html", function(req, res) {
 
 // Rota para lidar com o envio do formulário
 app.post('/cadastrar', (req, res) => {
-  const { nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep, tipo_exame, nome_exame, data_exame, data_entrega, convenio, medico, comentario } = req.body;
+  const {nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep, tipo_exame, nome_exame, data_exame, data_entrega, convenio, medico, comentario } = req.body;
 
 //Cadastro de tabela relacionada Pacientes e Exames no Mysql - inicio do código
 // Verificar se o nome já existe na pacientes

@@ -2,8 +2,6 @@ const mysql = require('mysql2')
 const express = require('express');
 const bodyParser = require("body-parser");
 const encoder = bodyParser.urlencoded();
-const paciente = require("./modulos/Paciente")
-const exame = require("./modulos/Exame")
 const path = require('path');
 const ejs = require('ejs');
 const moment = require('moment');
@@ -35,6 +33,23 @@ connection.connect(function(error){
     if (error) throw error
     console.log("Conectado ao banco de dados com Sucesso!")
 });
+
+// Realizar o Login no banco de dados Mysql
+
+app.post("/index.html", encoder, (req, res) => {
+    var nome = req.body.nome;
+    var senha = req.body.senha;
+
+    connection.query("select * from usuarios where nome = ? and senha = ?", [nome, senha], (error, results, fields) => {
+        if(results.length > 0){
+            res.redirect("/ficha.html");
+        }else {
+            res.redirect("/index.html");
+        }
+        res.end();
+    })
+})
+
 
 // Listar registro da tabela  do banco de dados Mysql
 app.get('/', function(req, res) {
@@ -85,59 +100,9 @@ app.get ("/ultrassonografia.html", function(req, res) {
     res.sendFile(__dirname + "/ultrassonografia.html");
 });
 
-// Cadastra Ficha de Pacientes e exames
-app.post('/Ficha.html', function(req, res){
-    paciente.create({ 
-        nome: req.body.nome,
-        cpf: req.body.cpf,
-        rg: req.body.rg,
-        data_nascimento: req.body.data_nascimento,
-        sexo: req.body.sexo,
-        peso: req.body.peso,
-        altura: req.body.altura,
-        telefone: req.body.telefone,
-        celular: req.body.celular,
-        email: req.body.email,
-        endereco: req.body.endereco,
-        numero: req.body.numero,
-        complemento: req.body.complemento,
-        bairro: req.body.bairro,
-        cidade: req.body.cidade,
-        estado: req.body.estado,
-        cep: req.body.cep
-    }),exame.create({ 
-        tipo_exame: req.body.tipo_exame,
-        nome_exame: req.body.nome_exame,
-        comentario: req.body.comentario,
-        data_exame: req.body.data_exame,
-        data_entrega: req.body.data_entrega,
-        convenio: req.body.convenio,
-        medico: req.body.medico
-    }).then(function(){
-        res.sendFile(path.join(__dirname+ '/Ficha.html'));
-    }).catch(function(erro){
-        res.send('Erro: Nã0 foi cadastrado!' + erro)
-        return  
-    })
-})
 
 
-// Rota para inserir dados na tabela 'pessoas'
-app.post('/ficha.html', (req, res) => {
-    const { nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep} = req.body;
-  
-    const insertQuery = `
-      INSERT INTO pessoas (nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep) VALUES (?, ?)
-    `;
-  
-    connection.query(insertQuery, [nome, cpf, rg, data_nascimento, sexo, peso, altura, telefone, celular, email, endereco, numero, complemento, bairro, cidade, estado, cep], (err, result) => {
-      if (err) throw err;
-      console.log('Pessoa inserida com sucesso');
-      res.redirect('/ficha.html'); // Redirecionar para a página do formulário após a inserção
-    });
-  });
 
-  
 
 
 
