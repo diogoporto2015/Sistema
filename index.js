@@ -27,7 +27,7 @@ const connection = mysql.createConnection({
     host: "192.168.1.66",
     user: "diogoporto",
     password: "d@172709",
-    database: "cadastro"
+    database: "MEDIMAGEM"
 });
 connection.connect(function(error){
     if (error) throw error
