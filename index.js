@@ -36,7 +36,7 @@ connection.connect(function(error){
 
 // Realizar o Login no banco de dados Mysql
 
-app.post("/index2.html", encoder, (req, res) => {
+app.post("/index.html", encoder, (req, res) => {
     var nome = req.body.nome;
     var senha = req.body.senha;
 
@@ -44,7 +44,7 @@ app.post("/index2.html", encoder, (req, res) => {
         if(results.length > 0){
             res.redirect("/ficha.html");
         }else {
-            res.redirect("/index2.html");
+            res.redirect("/index.html");
         }
         res.end();
     })
@@ -72,8 +72,8 @@ app.get('/', function(req, res) {
 
 // carregar a pagina
 
-app.get ("/index2.html", function(req, res) {
-    res.sendFile(__dirname + "/index2.html");
+app.get ("/index.html", function(req, res) {
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/ficha.html", function (req, res){
