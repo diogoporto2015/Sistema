@@ -26,7 +26,7 @@ app.use(bodyParser.json())
 const connection = mysql.createConnection({
     host: "192.168.1.66",
     user: "diogoporto",
-    password: "d@172709",
+    password: "d@172709D",
     database: "MEDIMAGEM"
 });
 connection.connect(function(error){
